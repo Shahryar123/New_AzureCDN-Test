@@ -6,7 +6,7 @@ pool:
 jobs:
 - job: TestCDNConnection
   steps:
-  - pwsh: |
+  - powershell: |
       $ErrorActionPreference = 'Stop'
       try {
         Invoke-WebRequest -Method HEAD `
@@ -18,4 +18,4 @@ jobs:
         exit 1
       }
       Write-Host "✅ Successfully accessed the new CDN URL."
-    displayName: 'Test Access to New CDN'
+    displayName: 'Test Access to New CDN (Classic PowerShell)'
