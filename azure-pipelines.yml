@@ -1,7 +1,7 @@
 trigger: none
 
 pool:
-  name: default  # Replace with your actual agent pool name
+  vmImage: 'windows-latest'
 
 jobs:
 - job: TestCDNConnection
