@@ -1,7 +1,7 @@
 trigger: none
 
 pool:
-  name: MySelfHostedPool  # Replace with your actual agent pool name
+  name: default  # Replace with your actual agent pool name
 
 jobs:
 - job: TestCDNConnection
