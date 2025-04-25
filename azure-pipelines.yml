@@ -1,0 +1,21 @@
+trigger: none
+
+pool:
+  name: MySelfHostedPool  # Replace with your actual agent pool name
+
+jobs:
+- job: TestCDNConnection
+  steps:
+  - pwsh: |
+      $ErrorActionPreference = 'Stop'
+      try {
+        Invoke-WebRequest -Method HEAD `
+                          -Uri https://download.agent.dev.azure.com/agent/4.252.0/vsts-agent-win-x64-4.252.0.zip `
+                          -TimeoutSec 5 `
+                          -UseBasicParsing
+      } catch {
+        Write-Error "❌ Failed to access the new CDN URL."
+        exit 1
+      }
+      Write-Host "✅ Successfully accessed the new CDN URL."
+    displayName: 'Test Access to New CDN'
